@@ -65,6 +65,14 @@ export default () => {
           })
         }
         break
+      case 'cloud':
+        void sendSyncAction({
+          action: 'enable_cloud',
+          data: { enable },
+        }).catch(err => {
+          console.log(err)
+        })
+        break
       default:
         break
     }
@@ -93,6 +101,14 @@ export default () => {
       })
     }
     sync.client.host = host
+  })
+  watch(() => [
+    appSetting['sync.cloud.endpoint'],
+    appSetting['sync.cloud.syncId'],
+    appSetting['sync.cloud.token'],
+  ], () => {
+    if (appSetting['sync.mode'] != 'cloud' || !appSetting['sync.enable']) return
+    void sendSyncAction({ action: 'enable_cloud', data: { enable: true } })
   })
 
   watch(() => appSetting['network.proxy.enable'], enable => {

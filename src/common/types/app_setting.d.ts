@@ -643,7 +643,7 @@ declare global {
       /**
        * 同步服务模式
        */
-      'sync.mode': 'server' | 'client'
+      'sync.mode': 'server' | 'client' | 'cloud'
 
       /**
        * 是否启用同步服务
@@ -664,6 +664,15 @@ declare global {
        * 同步服务地址
        */
       'sync.client.host': string
+
+      /** Cloudflare Worker 地址 */
+      'sync.cloud.endpoint': string
+
+      /** 云端数据命名空间 */
+      'sync.cloud.syncId': string
+
+      /** Worker 访问令牌 */
+      'sync.cloud.token': string
 
 
       /**

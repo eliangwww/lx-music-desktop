@@ -46,12 +46,5 @@ declare namespace LX {
       isTop?: boolean
     }
 
-    interface SavedPlayInfo {
-      time: number
-      maxTime: number
-      listId: string
-      index: number
-    }
-
   }
 }

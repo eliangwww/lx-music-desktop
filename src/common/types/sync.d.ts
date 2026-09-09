@@ -38,6 +38,16 @@ declare namespace LX {
     | SyncAction<'generate_code'>
     | SyncAction<'enable_server', EnableServer>
     | SyncAction<'enable_client', EnableClient>
+    | SyncAction<'enable_cloud', { enable: boolean }>
+    | SyncAction<'get_cloud_status'>
+    | SyncAction<'sync_cloud_now', { forcePush: boolean }>
+
+    interface CloudStatus {
+      enabled: boolean
+      syncing: boolean
+      message: string
+      lastSyncTime: number
+    }
 
     type ServerDevices = ServerKeyInfo[]
 

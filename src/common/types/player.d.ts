@@ -1,5 +1,15 @@
 declare namespace LX {
   namespace Player {
+    interface SavedPlayInfo {
+      time: number
+      maxTime: number
+      listId: string
+      index: number
+    }
+  }
+}
+declare namespace LX {
+  namespace Player {
     interface ProgressBarOptions {
       progress: number
       mode?: Electron.ProgressBarOptions['mode']

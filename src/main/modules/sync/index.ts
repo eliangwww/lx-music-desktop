@@ -19,11 +19,18 @@ export {
   getStatus as getClientStatus,
 } from './client'
 
+export {
+  getCloudStatus,
+  startCloudSync,
+  stopCloudSync,
+  syncCloudNow,
+} from './cloud'
+
 export default () => {
   global.lx.event_app.on('main_window_close', () => {
     if (global.lx.appSetting['sync.mode'] == 'server') {
       void stopServer()
-    } else {
+    } else if (global.lx.appSetting['sync.mode'] == 'client') {
       void disconnectServer()
     }
   })

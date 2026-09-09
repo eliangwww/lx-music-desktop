@@ -11,6 +11,7 @@ const afterPack = require('./build-after-pack')
 const options = {
   appId: 'cn.toside.music.desktop',
   productName: 'lx-music-desktop',
+  npmRebuild: false,
   beforePack,
   afterPack,
   protocols: {
@@ -60,6 +61,7 @@ const winOptions = {
   win: {
     icon: './resources/icons/icon.ico',
     legalTrademarks: 'lyswhut',
+    signAndEditExecutable: false,
     // artifactName: '${productName}-v${version}-${env.ARCH}-${env.TARGET}.${ext}',
   },
   nsis: {

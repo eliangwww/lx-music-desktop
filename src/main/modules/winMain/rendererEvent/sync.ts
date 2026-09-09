@@ -10,6 +10,10 @@ import {
   getClientStatus,
   getServerDevices,
   removeServerDevice,
+  getCloudStatus,
+  startCloudSync,
+  stopCloudSync,
+  syncCloudNow,
 } from '@main/modules/sync'
 import { sendEvent } from '../main'
 
@@ -28,6 +32,11 @@ export default () => {
       case 'get_server_status': return getServerStatus()
       case 'get_client_status': return getClientStatus()
       case 'generate_code': return generateCode()
+      case 'enable_cloud':
+        data.data.enable ? startCloudSync() : stopCloudSync()
+        return getCloudStatus()
+      case 'get_cloud_status': return getCloudStatus()
+      case 'sync_cloud_now': return syncCloudNow(data.data.forcePush)
       case 'select_mode':
         if (selectModeListenr) {
           selectModeListenr(data.data.mode)

@@ -790,7 +790,15 @@ export const onSyncAction = (listener: LX.IpcRendererEventListenerParams<LX.Sync
  * @returns
  */
 export const sendSyncAction = async(action: LX.Sync.SyncServiceActions) => {
-  return rendererInvoke<LX.Sync.SyncServiceActions>(WIN_MAIN_RENDERER_EVENT_NAME.sync_action, action)
+  return rendererInvoke<LX.Sync.SyncServiceActions, any>(WIN_MAIN_RENDERER_EVENT_NAME.sync_action, action)
+}
+
+export const getCloudSyncStatus = async() => {
+  return sendSyncAction({ action: 'get_cloud_status' }) as Promise<LX.Sync.CloudStatus>
+}
+
+export const syncCloudNow = async(forcePush: boolean) => {
+  return sendSyncAction({ action: 'sync_cloud_now', data: { forcePush } }) as Promise<LX.Sync.CloudStatus>
 }
 
 /**

@@ -144,6 +144,9 @@ const defaultSetting: LX.AppSetting = {
   'sync.server.port': '23332',
   'sync.server.maxSsnapshotNum': 5,
   'sync.client.host': '',
+  'sync.cloud.endpoint': '',
+  'sync.cloud.syncId': '',
+  'sync.cloud.token': '',
 
   'openAPI.enable': false,
   'openAPI.port': '23330',
